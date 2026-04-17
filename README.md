@@ -3,7 +3,7 @@
 This repository contains the Stage 1a submission for the HNG Frontend Wizard track. It builds upon the static Stage 0 Todo Card, transforming it into an interactive, stateful, and fully responsive component using Vanilla JavaScript and CSS.
 
 ## Live Demo
-[Insert Your Live Hosted URL Here]
+[https://ufidtech.github.io/hng-stage1a/]
 
 ---
 
