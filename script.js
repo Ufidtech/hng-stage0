@@ -43,14 +43,25 @@ const dateInput = document.querySelector(
 );
 
 // Collapse Elements
-const expandToggleBtn = document.querySelector('[data-testid="test-todo-expand-toggle"]');
-const collapsibleSection = document.querySelector('[data-testid="test-todo-collapsible-section"]');
+const expandToggleBtn = document.querySelector(
+  '[data-testid="test-todo-expand-toggle"]',
+);
+const collapsibleSection = document.querySelector(
+  '[data-testid="test-todo-collapsible-section"]',
+);
 
 // Status Elements
-const statusCheckbox = document.querySelector('[data-testid="test-todo-complete-toggle"]');
+const statusCheckbox = document.querySelector(
+  '[data-testid="test-todo-complete-toggle"]',
+);
 const statusLabel = document.querySelector('[data-testid="test-todo-status"]');
-const statusSelect = document.querySelector('[data-testid="test-todo-status-control"]');
+const statusSelect = document.querySelector(
+  '[data-testid="test-todo-status-control"]',
+);
 const mainCard = document.querySelector('[data-testid="test-todo-card"]'); // Needed to trigger the CSS strike-through
+const deleteBtn = document.querySelector(
+  '[data-testid="test-todo-delete-button"]',
+);
 
 // ==========================================
 // 2. THE EDIT ENGINE ("The Flip-Flop")
@@ -127,7 +138,6 @@ saveBtn.addEventListener("click", function () {
   editBtn.focus();
 });
 
-
 // ==========================================
 // 3. THE COLLAPSE ENGINE
 // ==========================================
@@ -147,7 +157,6 @@ expandToggleBtn.addEventListener("click", function () {
   }
 });
 
-
 // ==========================================
 // 4. THE STATUS ENGINE
 // ==========================================
@@ -166,13 +175,26 @@ statusCheckbox.addEventListener("change", function () {
 });
 
 // --- ADD THIS TO YOUR EXISTING SAVE BUTTON LOGIC ---
-  // Sync the checkbox and UI with whatever status was selected in the dropdown
-  statusLabel.textContent = statusSelect.value;
-  
-  if (statusSelect.value === "Done") {
-    statusCheckbox.checked = true;
-    mainCard.classList.add("is-completed");
-  } else {
-    statusCheckbox.checked = false;
-    mainCard.classList.remove("is-completed");
+// Sync the checkbox and UI with whatever status was selected in the dropdown
+statusLabel.textContent = statusSelect.value;
+
+if (statusSelect.value === "Done") {
+  statusCheckbox.checked = true;
+  mainCard.classList.add("is-completed");
+} else {
+  statusCheckbox.checked = false;
+  mainCard.classList.remove("is-completed");
+}
+
+// ==========================================
+// 5. THE DELETE ENGINE
+// ==========================================
+deleteBtn.addEventListener("click", function () {
+  // Show a browser confirmation popup
+  const isConfirmed = confirm("Are you sure you want to delete this task?");
+
+  // If they click "OK", wipe the card from the screen
+  if (isConfirmed) {
+    mainCard.remove();
   }
+});
